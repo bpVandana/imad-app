@@ -4,6 +4,56 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
+var articleOne={
+    title:'Article-one|Vandana',
+    heading:'Article one',
+    date:'aug 6th 2017',
+    content:` <p>
+                  This is my first articlr.Hello
+              This is my first articlr.Hello
+              This is my first articlr.Hello This is my first articlr.Hello
+              v
+             </p>
+              <p>This is my first articlr.Hello
+              This is my first articlr.Hello
+              This is my first articlr.Hello This is my first articlr.Hello
+              v
+             </p><p>This is my first articlr.Hello
+              This is my first articlr.Hello
+              This is my first articlr.Hello This is my first articlr.Hello
+              v
+             </p>`
+};
+function createTemplate(data){
+    var title=data.title;
+    var content=data.content;
+    var  heading=data.heading;
+    var htmlTemplate=`
+        <!DOCTYPE html>
+      <head>
+          <title>
+              ${title}
+          </title>
+          <meta name="viewport" content="width=width-device,initial-scale=1">
+           <link href="/ui/style.css" rel="stylesheet" />
+           </head>
+      <body>
+          <div class ="container">
+              <div>
+                  <a href="\">Home</a>
+              </div>
+              <hr/>
+              <h3>${heading}</h3>
+              
+              <div>
+                ${date}
+              </div>
+             <div>${content}</div>
+          </div>
+      </body>
+    </html>
+    `
+   ;}
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
@@ -15,7 +65,7 @@ app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
 app.get('/article-one',function(req,res){
-     res.sendFile(path.join(__dirname, '', 'article-one.html'));
+     res.send(createTemplate(articleOne));
 });
 app.get('/article-three',function(req,res){
      res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
