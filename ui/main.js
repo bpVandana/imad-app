@@ -26,3 +26,12 @@ request.send(null);
    //render request
    
 };
+//submit name
+var nameInput=document.getElementById('text');
+var names=nameInput.value;
+var submit=document.getElementByid('submit');
+submit.onclick=functiion()
+{
+    
+    
+};
