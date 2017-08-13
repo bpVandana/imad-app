@@ -82,7 +82,7 @@ function createTemplate(data){
 }
 var counter=0;
 app.get('/',function(req,res){
-    counter=counte + 1;
+    counter=counter + 1;
     res.send(counter.toString());
 }
 );
