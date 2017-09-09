@@ -19,6 +19,15 @@ pool.query('SELECT * FROM test',function(err,result)
      res.send(JSON.stringfy(result));}
     
 });
+function hash(input,salt)
+{
+    var hashed=crypto.pbkdf2Sync(input,salt,10000,512,'shaf12');
+    return hashed.toString('hex');
+}
+app.get('/hash/input',function(req,res){
+    var hashedString=hash(req.params.input,'this-is-a random-string');
+    res.send(hashedString);
+});
 var app = express();
 app.use(morgan('combined'));
 var 
@@ -97,6 +106,7 @@ function createTemplate(data){
    ;
     return htmlTemplate;
 }
+
 var counter=0;
 app.get('/counter',function(req,res){
     counter=counter + 1;
