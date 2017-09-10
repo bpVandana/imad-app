@@ -28,6 +28,10 @@ app.get('/hash/input',function(req,res){
     var hashedString=hash(req.params.input,'this-is-a random-string');
     res.send(hashedString);
 });
+app.get('/create-user',function(req,res){
+ var salt=crypto.getRandomBytes(128)
+ var dbString=hash(password,salt);   
+});
 var app = express();
 app.use(morgan('combined'));
 var 
