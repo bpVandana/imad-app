@@ -30,7 +30,8 @@ app.get('/hash/input',function(req,res){
 });
 app.get('/create-user',function(req,res){
  var salt=crypto.getRandomBytes(128)
- var dbString=hash(password,salt);   
+ var dbString=hash(password,salt);  
+ pool.query('INSERT')
 });
 var app = express();
 app.use(morgan('combined'));
